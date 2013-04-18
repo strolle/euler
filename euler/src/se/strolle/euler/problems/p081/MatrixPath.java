@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
+import se.strolle.euler.util.FileUtil;
+
 public class MatrixPath {
 	static final int ROWS = 80;
 	static final int COLS = 80;
@@ -53,9 +55,8 @@ public class MatrixPath {
 		rawData = new int[ROWS][COLS];
 		cacheData = new long[ROWS][COLS];
 
-		BufferedReader br = new BufferedReader(
-				new FileReader(
-						"/Users/stefantrolle/git/euler/euler/src/se/strolle/euler/problems/p081/matrix.txt"));
+		BufferedReader br = new BufferedReader(new FileReader(
+				FileUtil.getFile("/se/strolle/euler/problems/p081/matrix.txt")));
 
 		try {
 			int row = 0;

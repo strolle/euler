@@ -1,4 +1,4 @@
-package se.strolle.euler.problems.p050;
+package se.strolle.euler.problems.p030;
 
 import java.util.ArrayList;
 import java.util.HashMap;

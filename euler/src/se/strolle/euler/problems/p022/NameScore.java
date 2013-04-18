@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import se.strolle.euler.util.FileUtil;
+
 public class NameScore {
 
 	public static void main(String[] args) throws Exception {
@@ -19,12 +21,13 @@ public class NameScore {
 		for (int i = 0; i < input.size(); i++) {
 			long individualResult = 0;
 			char[] name = input.get(i).toCharArray();
-			for (int j=0; j < name.length; j++){
-				individualResult += (name[j]-charVal);
+			for (int j = 0; j < name.length; j++) {
+				individualResult += (name[j] - charVal);
 			}
-			individualResult*=(i+1);
-			result+=individualResult;
-			System.out.println(i + ": " + input.get(i) + " - " + individualResult);
+			individualResult *= (i + 1);
+			result += individualResult;
+			System.out.println(i + ": " + input.get(i) + " - "
+					+ individualResult);
 		}
 
 		System.out.println("Result: " + result);
@@ -33,21 +36,23 @@ public class NameScore {
 	}
 
 	static List<String> readInput() throws Exception {
-		BufferedReader buf = new BufferedReader(
-				new InputStreamReader(
-						new FileInputStream(
-								"C:/programming/workspace/euler/src/se/strolle/euler/problems/p022/names.txt")));
-
-		List<String> out = new ArrayList<String>();
-		String line = "";
-		while ((line = buf.readLine()) != null) {
-			String[] lineSplit = line.substring(1, line.length() - 1).toLowerCase().split(
-					"\",\"");
-			for (String name : lineSplit) {
-				out.add(name);
+		BufferedReader buf = new BufferedReader(new InputStreamReader(
+				new FileInputStream(FileUtil
+						.getFile("/se/strolle/euler/problems/p022/names.txt"))));
+		try {
+			List<String> out = new ArrayList<String>();
+			String line = "";
+			while ((line = buf.readLine()) != null) {
+				String[] lineSplit = line.substring(1, line.length() - 1)
+						.toLowerCase().split("\",\"");
+				for (String name : lineSplit) {
+					out.add(name);
+				}
 			}
+			return out;
+		} finally {
+			buf.close();
 		}
-		return out;
 	}
 
 }
