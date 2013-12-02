@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CoinCount {
-    // private static final int MAX_VAL = 200;
     private static final int MAX_VAL = 200;
-
     private static int count = 0;
 
     public static void main(String[] args) throws Exception {
@@ -41,5 +39,4 @@ public class CoinCount {
             valLeft -= currentCoin;
         }
     }
-
 }
