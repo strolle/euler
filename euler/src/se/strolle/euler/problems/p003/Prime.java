@@ -4,13 +4,12 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Prime {
+import se.strolle.euler.util.PrimeUtil;
 
-    private static List<Long> foundPrimes = new LinkedList<Long>();
+public class Prime {
 
     public static void main(String[] args) {
         long NUM_TO_FACTOR = 600851475143L;
-        foundPrimes.add(2L);
 
         List<Long> factors = new LinkedList<Long>();
         long currentTest = 2;
@@ -31,19 +30,10 @@ public class Prime {
     private static long nextPrime(long input) {
         if (input % 2 == 0)
             input++;
-        while (!isPrime(input)) {
+        while (!PrimeUtil.isPrime(input)) {
             input += 2;
         }
         return input;
     }
 
-    private static boolean isPrime(long numToCheck) {
-        for (long prime : foundPrimes) {
-            if (numToCheck % prime == 0) {
-                return false;
-            }
-        }
-        foundPrimes.add(numToCheck);
-        return true;
-    }
 }

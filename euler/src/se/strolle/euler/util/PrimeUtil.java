@@ -1,31 +1,21 @@
 package se.strolle.euler.util;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
 public class PrimeUtil {
-    static long maxTested = 1;
-    private static List<Long> foundPrimes = new LinkedList<Long>();
-    private static Map<Long, Boolean> foundPrimesMap = new HashMap<Long, Boolean>();
-
-    public static boolean isPrime(long numToCheck) {
-        while (maxTested < numToCheck) {
-            boolean isPrime = true;
-            maxTested++;
-            for (long prime : foundPrimes) {
-                if (maxTested % prime == 0) {
-                    isPrime = false;
-                    break;
+    public static boolean isPrime(long num) {
+        if (num < 2) {
+            return false;
+        } else if (num == 2) {
+            return true;
+        } else if (num % 2 == 0) {
+            return false;
+        } else {
+            for (int divisor = 3; divisor <= Math.sqrt(num); divisor += 2) {
+                if (num % divisor == 0) {
+                    return false;
                 }
             }
-            if (isPrime) {
-                foundPrimes.add(maxTested);
-                foundPrimesMap.put(maxTested, true);
-            }
+            return true;
         }
-
-        return foundPrimesMap.containsKey(numToCheck);
     }
+
 }
