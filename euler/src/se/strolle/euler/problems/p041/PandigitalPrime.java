@@ -15,7 +15,7 @@ public class PandigitalPrime {
         List<Integer> res = Arrays.asList(9, 8, 7, 6, 5, 4, 3, 2, 1);
         List<Integer> numList = new ArrayList<Integer>();
         numList.addAll(res);
-        while (result == 0 && res.size() > 0) {
+        while (result == 0 && numList.size() > 0) {
             result = scrambleAndTest("", numList);
             numList.remove(0);
         }
