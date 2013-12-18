@@ -18,4 +18,30 @@ public class PrimeUtil {
         }
     }
 
+    public static long nextPrime(long input) {
+        long lastFound = input;
+        if (input == 2)
+            lastFound++;
+        else
+            lastFound += 2;
+
+        while (!PrimeUtil.isPrime(lastFound)) {
+            lastFound += 2;
+        }
+        return lastFound;
+    }
+
+    public static long previousPrime(long input) {
+        long lastFound = input;
+        if (input == 2)
+            return -1;
+        else
+            lastFound -= 2;
+
+        while (!PrimeUtil.isPrime(lastFound)) {
+            lastFound -= 2;
+        }
+        return lastFound;
+    }
+
 }
